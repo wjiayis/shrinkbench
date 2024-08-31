@@ -77,5 +77,6 @@ def broadcast_unitary_compression(df):
             if strategy is not None:
                 new_row = row.copy()
                 new_row['strategy'] = strategy
-                df = df.append(new_row, ignore_index=True)
+                # df = df.append(new_row, ignore_index=True)
+                df = pd.concat([df, new_row], axis=1)
     return df

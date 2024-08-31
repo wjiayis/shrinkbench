@@ -42,7 +42,7 @@ def dataset_path(dataset, path=None):
     paths = [pathlib.Path(p) for p in path.split(':')]
 
     for p in paths:
-        p = (p / dataset).resolve()
+        # p = (p / dataset).resolve()
         if p.exists():
             print(f"Found {dataset} under {p}")
             return p
@@ -76,9 +76,8 @@ def dataset_builder(dataset, train=True, normalize=None, preproc=None, path=None
         kwargs['split'] = 'train' if train else 'val'
     else:
         kwargs['train'] = train
-
+    
     path = dataset_path(dataset, path)
-
     return _constructors[dataset](path, **kwargs)
 
 
